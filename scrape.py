@@ -21,22 +21,9 @@ def scrape(url, output_dir):
         
         process = subprocess.Popen(['mkdir', out_dir], stdout=subprocess.PIPE)
         output, error = process.communicate()
-        # print(output)
         
-        print(out_dir)
-        print(git_link)
-        print('ok')
+        print("cloning [%s] to [%s]" % (git_link, out_dir))
         git.Git(out_dir).clone(git_link)
-
-    with open('./output.html', 'w') as f:
-        f.write(html.decode('utf-8'))
-
-    # d = OrderedDict()
-    # for th, td in zip(soup.select('th'), soup.select('td')[::2]):
-    #     d[th.text.strip()] = td.text.strip().splitlines()
-
-    # pprint(d)
-
 
 if __name__ == "__main__":
     giturl = sys.argv[1]
